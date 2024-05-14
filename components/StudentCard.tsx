@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 
 type Student = {
@@ -18,11 +17,23 @@ type Student = {
 
 type StudentCardProps = {
   data: Student;
+  selectedStudent: number;
+  setSelectedStudent: (id: number) => void;
 };
 
-const StudentCard: React.FC<StudentCardProps> = ({ data }) => {
+const StudentCard: React.FC<StudentCardProps> = ({
+  data,
+  selectedStudent,
+  setSelectedStudent,
+}) => {
   return (
-    <div className="flex items-center justify-between">
+    <div
+      onClick={() => setSelectedStudent(data.id)}
+      className="flex items-center justify-between cursor-pointer"
+      style={{
+        backgroundColor: selectedStudent === data.id ? "#f0f0f0" : "#fff",
+      }}
+    >
       <div className="flex gap-2 items-center">
         <div className="h-10 w-10 overflow-hidden rounded-3xl">
           <img className="h-full w-full" src={data.image} alt={data.name} />

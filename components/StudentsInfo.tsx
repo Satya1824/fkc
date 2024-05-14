@@ -1,7 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import StudentList from "./StudentList";
 
 const StudentsInfo = () => {
+  const [selectedStudent, setSelectedStudent] = useState(1);
+
   return (
     <div className="bg-red-300">
       <p className="text-xs">
@@ -10,7 +14,7 @@ const StudentsInfo = () => {
       <p className="text-xs font-bold ml-3 mt-1">Sales BDE</p>
 
       <div className="flex mt-4">
-        <div className="bg-white p-3 rounded-xl">
+        <div className="bg-white p-3 rounded-xl w-[300px]">
           <div className="flex items-center justify-between">
             <p className="font-bold text-base">Sales BDE</p>
             <p className="font-bold text-base text-green-400">Active</p>
@@ -40,16 +44,19 @@ const StudentsInfo = () => {
           </div>
 
           <div className="flex gap-5 mt-10">
-            <button className="text-black font-semibold text-[.6rem] bg-white py-2 px-7 rounded-full">
+            <button className="text-black font-semibold text-[.6rem] bg-white shadow-md py-2 px-7 rounded-full">
               TO REVIEW
             </button>
-            <button className="text-white font-semibold text-[.6rem]">
+            <button className="text-black font-semibold text-[.6rem]">
               SHORTLISTED
             </button>
           </div>
 
           <div className="mt-5">
-            <StudentList />
+            <StudentList
+              selectedStudent={selectedStudent}
+              setSelectedStudent={setSelectedStudent}
+            />
           </div>
         </div>
       </div>
